@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Worker List</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-3">
+    <h3 class="mb-3">Worker Information</h3>
+
+    {% if workers %}
+    <table class="table table-dark table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Worker Name</th>
+                <th>Last Name</th>
+                <th>Branch Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for worker in workers %}
+            <tr>
+                <td>{{ worker.wid }}</td>
+                <td>{{ worker.wname }}</td>
+                <td>{{ worker.wowog }}</td>
+                <td>{{ worker.bname }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>No workers found!</p>
+    {% endif %}
+    <a href="{{url_for('index')}}">back</a>
+
+</body>
+</html>

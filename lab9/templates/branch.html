@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Branch List</title>
+</head>
+<body>
+    <h3>Branch Information</h3>
+    {% if branches %}
+        <ul>
+        {% for branch in branches %}
+            <li>{{ branch.bid }} — {{ branch.bname }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No branches found!</p>
+    {% endif %}
+    <a href="{{url_for('index')}}">back</a>
+
+</body>
+</html>
