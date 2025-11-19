@@ -1,0 +1,72 @@
+lab10
+
+daalgawar 2:
+	SELECT w.wlast, w.wname, w.regdug, w.email, d.depname
+	FROM worker w INNER JOIN department d ON w.depcode = d.depcode
+daalgawar 3; 
+SELECT w.wcode,w.wlast,w.wname,w.regdug,w.procode,w.depcode, w.phone, w.email, p.proname
+FROM worker w INNER JOIN profession p ON w.procode=p.procode
+daalgawar 4;
+SELECT 
+    s.wcode AS "Ажилтны код",
+    w.wlast AS "Овог",
+    w.wname AS "Нэр",
+    s.salary AS "Үндсэн цалин",
+    s.Tax AS "Хаоат",
+    s.ndsh AS "НДШ",
+    s.other AS "Бусад суутгал",
+    su.suutname AS "Суутгалын нэр",
+    s.payment AS "Урьдчилгаа",
+    s.garolgo AS "Гарт олгох дүн"
+FROM salary s
+JOIN worker w ON s.wcode = w.wcode
+LEFT JOIN nemegdel n ON s.nemcode = n.nemcode
+LEFT JOIN suutgal su ON s.suutcode = su.suutcode;
+daalgawar5;
+SELECT 
+    d.Depname AS "Хэлтэс",
+    COUNT(w.wcode) AS "Ажилтны тоо"
+FROM worker w
+JOIN department d ON w.depcode = d.depcode
+GROUP BY d.Depname;
+daalgawar6;SELECT 
+    d.Depname AS "Хэлтэс",
+    SUM(s.salary) AS "Нийт цалин"
+FROM salary s
+JOIN worker w ON s.wcode = w.wcode
+JOIN department d ON w.depcode = d.depcode
+GROUP BY d.Depname;
+daalgawar7;SELECT 
+    MAX(nemdvn) AS "Хамгийн их нэмэгдэл",
+    MIN(nemdvn) AS "Хамгийн бага нэмэгдэл"
+FROM nemegdel;
+daalgawar8;SELECT 
+    w.wcode AS "Ажилтны код",
+    w.wlast AS "Овог",
+    w.wname AS "Нэр",
+    p.Proname AS "Мэргэжлийн нэр",
+    d.Depname AS "Хэлтсийн нэр"
+FROM worker w
+JOIN profession p ON w.procode = p.procode
+JOIN department d ON w.depcode = d.depcode;
+daalgawar9;SELECT 
+    d.Depname AS "Хэлтэс",
+    SUM(sg.suutdvn) AS "100000-с дээш суутгалын нийлбэр"
+FROM salary s
+JOIN worker w ON s.wcode = w.wcode
+JOIN department d ON w.depcode = d.depcode
+JOIN suutgal sg ON s.suutcode = sg.suutcode
+WHERE sg.suutdvn > 100000
+GROUP BY d.Depname;
+daalgawar10;SELECT 
+    d.Depname AS "Хэлтэс",
+    SUM(s.salary) AS "Нийт цалин",
+    AVG(s.salary) AS "Дундаж цалин"
+FROM salary s
+JOIN worker w ON s.wcode = w.wcode
+JOIN department d ON w.depcode = d.depcode
+WHERE d.Depname = 'Захиргааны хэлтэс'
+GROUP BY d.Depname;
+daalgawar11;
+
+
