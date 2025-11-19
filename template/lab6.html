@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    
+    <meta charset="UTF-8">
+    <title>Өнгө солих жишээ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lab6.css') }}"> <!-- CSS тусдаа -->
+</head>
+
+<body>
+
+    <h1>Манай сайтад тавтай морил!</h1>
+    <p>Энэ бол лаб#6-н дагуу миний хийсэн анхны html хуудас</p>
+    <a href="https://mandakh.edu.mn/" target="_blank">Энэ бол Мандах их сургуулийн албан ёсны вэб сайт </a>
+    <p>Энэ бол сургуулийн лого</p>
+    <img src="{{ url_for('static', filename='img/mandah.logo.jpg') }}" >
+    <p>Мандах Их Сургуулийн салбар сургуулиуд</p>
+     <ol>
+    <li>төв сургууль</li>
+    <li>Мэдээлэл технологийн сургууль</li>
+    <li>Дарханы салбар сургууль</li>
+    </ol>
+    <p>лаб#6 хийж гүйцэтгэсэн <b> Б.Дэлгэрдалай</b></p> 
+
+
+
+
+    <h2>Өнгө солих програм</h2>
+
+    <!-- Өнгө сонгох хэсэг -->
+    <label for="colorSelect">Өнгө сонгох:</label>
+    <select id="colorSelect">
+        <option value="red">Улаан</option>
+        <option value="green">Ногоон</option>
+        <option value="yellow">Шар</option>
+    </select>
+
+    <!-- Товч -->
+    <button onclick="change_color()">Өнгө солих</button>
+
+    <!-- Өнгө болон нэр харуулах хэсэг -->
+    <div id="myDiv">chocolate</div>
+
+    <!-- JavaScript энд байна -->
+    <script>
+        function change_color() {
+            let selectedColor = document.getElementById("colorSelect").value;
+            let div = document.getElementById("myDiv");
+
+            // div-ийн өнгө солих
+            div.style.backgroundColor = selectedColor;
+
+            // div дотор өнгөний нэрийг бичих
+            div.innerHTML = selectedColor;
+        }
+    </script>
+
+</body>
+</html>
